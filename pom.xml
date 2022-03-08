@@ -21,6 +21,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<groupId>org.springframework.boot</groupId>
+		</dependency>
 	</dependencies>
 	<description>Demo project for Spring Boot</description>
 	<groupId>org.ada.school</groupId>
