@@ -2,6 +2,8 @@ package org.ada.school.user.model;
 
 
 import org.ada.school.user.controller.dto.UserDto;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.util.Date;
 import java.util.UUID;
@@ -9,11 +11,12 @@ import java.util.UUID;
 public class User
 
 {
-
+    @Id
     String id;
 
     String name;
 
+    @Indexed(unique = true)
     String email;
 
     String lastName;
@@ -28,6 +31,9 @@ public class User
         lastName = userDto.getLastName();
         email = userDto.getEmail();
         createdAt = new Date();
+    }
+
+    public User() {
     }
 
     public String getName()

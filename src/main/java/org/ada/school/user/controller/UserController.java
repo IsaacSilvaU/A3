@@ -4,7 +4,6 @@ import org.ada.school.user.controller.dto.UserDto;
 import org.ada.school.user.model.User;
 import org.ada.school.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,35 +29,40 @@ public class UserController
     }
 
 
-    @GetMapping
+    /*@GetMapping
     public ResponseEntity<List<User>> all()
     {
         return ResponseEntity.ok( userService.all() );
+    }*/
+
+    @GetMapping("/all")
+    public List<User> all()
+    {
+        return userService.all();
     }
 
     @GetMapping( "/{id}" )
-    public ResponseEntity<User> findById( @PathVariable String id )
+    public User findById(@PathVariable("id") String id )
     {
-        return ResponseEntity.ok( userService.findById( id ) );
+        return userService.findById( id );
     }
 
-
     @PostMapping
-    public ResponseEntity<User> create( @RequestBody UserDto userDto )
+    public User create( @RequestBody UserDto userDto )
     {
-        return ResponseEntity.ok( userService.create( new User( userDto ) ) );
+        return userService.create( new User( userDto ));
     }
 
     @PutMapping( "/{id}" )
-    public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id )
+    public User update( @RequestBody UserDto userDto, @PathVariable String id )
     {
-        return ResponseEntity.ok( userService.update( userDto, id ) );
+        return userService.update( userDto, id );
     }
 
     @DeleteMapping( "/{id}" )
-    public ResponseEntity<Boolean> delete( @PathVariable String id )
+    public boolean delete( @PathVariable String id )
     {
-        return ResponseEntity.ok( userService.deleteById( id ) );
+        return userService.deleteById( id );
     }
 
 }

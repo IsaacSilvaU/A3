@@ -10,9 +10,14 @@ public interface UserService
 {
     User create( User user );
 
-    User findById( String id );
+    User findById(String id );
+
+    //List<User> findUsersWithNameOrLastNameLike(String queryText);
+
+    //List<User> findUsersCreatedAfter(Date startDate);
 
     List<User> all();
+    //List<User> all(String id);
 
     boolean deleteById( String id );
 
